@@ -1,0 +1,257 @@
+<ion-nav #mycontent [root]="rootPage"></ion-nav>
+<ion-header>
+  <ion-navbar hideBackButton class="navbar">
+    <ion-grid class="">
+      <ion-row class="">
+        <ion-col col-12 col-sm-12 col-md-6  >
+            <img class="" src="assets/img/header.png" (click)="openResumen()">
+        </ion-col>
+        <ion-col col-12 col-sm-12 col-md-6  >
+          <ion-buttons end>
+            <span class="current-user-name">{{operacion.usuario}}</span> 
+            <button ion-button icon-only (click)="cerrarSesion()">
+              <ion-icon name="log-out"> {{ 'SALIR' | translate }}</ion-icon>
+            </button>
+            <button class="bandera" (click)="onChange('es')" ion-button icon-only>
+              <img class="" src="assets/img/spanish.png">
+            </button>
+            <button class="bandera" (click)="onChange('en')" ion-button icon-only>
+              <img class="" src="assets/img/english.png">
+            </button>
+            <button class="bandera" (click)="onChange(ca)" ion-button icon-only>
+              <img class="" src="assets/img/valencian.png">
+            </button>
+          </ion-buttons>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="fondo-listado">
+  <ion-grid class="grid-menu">
+    <ion-row class="row-menu">
+      <ion-col col-md-2 col-12 class="menu">
+        <ul  class="list-menu ">
+        <li class="item-menu-apunte">
+            <a class="a-menu" (click)="addItem()">
+              <ion-grid class="grid-item">
+                <ion-row class="row-item">
+                  <ion-col col-12 class="col-item icon-menu">
+                    <ion-icon name="add" class="icon-anyadir">                    
+                      <span class="span-anyadir">{{ 'AÑADIR_APUNTE' | translate }}</span>
+                    </ion-icon>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </a>
+          </li>
+          <li class="item-menu">
+            <a class="a-menu" (click)="openResumen()">
+              <ion-grid class="grid-item">
+                <ion-row class="row-item">
+                  <ion-col col-3 class="col-item icon-menu">
+                    <ion-icon name="home" class=""></ion-icon>
+                  </ion-col>
+                  <ion-col col-9 class="col-item">
+                    <span class="span-menu">{{ 'RESUMEN' | translate }}</span>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </a>
+          </li>
+          <li class="item-menu" >
+            <a class="a-menu" (click)="openMovimientos()">
+              <ion-grid class="grid-item">
+                <ion-row class="row-item">
+                  <ion-col col-3 class="col-item icon-active">
+                    <ion-icon name="sync" class=""></ion-icon>
+                  </ion-col>
+                  <ion-col col-9 class="col-item ">
+                    <span class="span-menu-active">{{ 'MOVIMIENTOS' | translate }}</span>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </a>
+          </li>
+          <li class="item-menu" >
+            <a class="a-menu">
+              <ion-grid class="grid-item">
+                <ion-row class="row-item" (click)="openEstadisticas()">
+                  <ion-col col-3 class="col-item icon-menu">
+                    <ion-icon name="stats" class=""></ion-icon>
+                  </ion-col>
+                  <ion-col col-9 class="col-item" >
+                    <span class="span-menu">{{ 'ESTADISTICAS' | translate }}</span>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </a>
+          </li>
+        </ul>
+        <ion-footer>
+          <button class="button-footter" ion-button (click)="contacto()">{{ 'AYUDANOS' | translate }}</button>
+        </ion-footer>
+      </ion-col>
+    
+      <ion-col col-md-10>
+        <ion-grid class="grid-resultados">
+          <ion-row class="row-resultados">
+              <ion-col col-md-4 col-sm-12 col-12 class="col-resultados icon-resultados">
+                  <ion-grid class="grid-icon-resultados">
+                    <ion-row class="row-icon-resultados">
+                      <ion-col col-md-12 col-sm-12 col-12 class="col-texto-resultados">
+                        <small class="text-muted text-uc">{{ 'MOVIMIENTOS' | translate }}</small>                 
+                        <h2 class="block m-t-xs"><strong> {{resultados.movimientos}}</strong></h2>
+                      </ion-col>
+                    </ion-row>
+                  </ion-grid>
+              </ion-col>
+            <ion-col col-md-4  col-sm-12 col-12 class="col-resultados icon-resultados">
+                <ion-grid class="grid-icon-resultados">
+                  <ion-row class="row-icon-resultados">
+                    <ion-col col-md-12 col-sm-12 col-12 class="col-texto-resultados">
+                      <small class="text-muted text-uc">{{ 'SALDO' | translate }}</small>                 
+                      <h2 class="block m-t-xs saldo"><strong> {{fomatPrice(resultados.saldo)}} €</strong></h2>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+            </ion-col>
+            <ion-col col-md-4  col-sm-12 col-12 class="col-resultados icon-resultados">
+                <ion-grid class="grid-icon-resultados">
+                  <ion-row class="row-icon-resultados">
+                    <ion-col col-md-12 col-sm-12 col-12 class="col-texto-resultados2">
+                      <small class="text-muted text-uc">{{ 'INGRESOS' | translate }}</small>                 
+                      <h2 class="block m-t-xs"><strong> {{fomatPrice(resultados.ingresos)}} €</strong></h2>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+            </ion-col>
+            <!--<ion-col col-md-3  col-sm-6 col-6 class="col-resultados icon-resultados">
+                <ion-grid class="grid-icon-resultados">
+                  <ion-row class="row-icon-resultados">
+                    <ion-col col-md-2 col-sm-6 col-6 class="col-icon-resultados icon-resultados">
+                        <img src="assets/img/dislike.png" />
+                      </ion-col>
+                    <ion-col col-md-10 col-sm-6 col-6 class="col-texto-resultados2">
+                      <h2 class="block m-t-xs"><strong> {{fomatPrice(resultados.gastos)}} €</strong></h2>
+                      <small class="text-muted text-uc">Gastos</small>                 
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+            </ion-col>-->
+
+          </ion-row>
+        </ion-grid>
+        
+        <ion-grid class="">
+          <ion-row class="">
+            <ion-col col-md-8 col-sm-12 col-12 class="">
+              <button ion-button (click)="restarDias(365)">{{ 'ESTE_ANO' | translate }}</button>
+              <button ion-button (click)="restarDias(30)">{{ 'ESTE_MES' | translate }}</button>
+              <button ion-button (click)="restarDias(7)">{{ 'ESTA_SEMANA' | translate }}</button>
+              <ion-grid class="grid-movimientos">
+                <ion-row class="row-movimientos">
+                  <ion-col col-12>
+                    <p>{{ 'LISTADO_MOVIVMIENTOS' | translate }}</p>
+                  </ion-col>
+                </ion-row>
+                <ion-row class="row-movimientos2">
+                  <ion-col col-3>
+                    <p>{{ 'FECHA' | translate }}</p>
+                  </ion-col>
+                  <ion-col col-3>
+                    <p>{{ 'CONCEPTO' | translate }}</p>
+                  </ion-col>
+                  <ion-col col-3>
+                    <p>{{ 'IMPORTE' | translate }}</p>
+                  </ion-col>
+                  <ion-col col-3>
+                    <p>{{ 'TIPO' | translate }}</p>
+                  </ion-col>
+                </ion-row>
+                <ion-row class="cursor row-info-movimientos"  *ngFor="let item of operaciones.operaciones" (click)="openItem(item)">
+                    <ion-col col-3>
+                      <p>{{item.fecha|date:'dd/MM/yyyy'}}</p>
+                    </ion-col>
+                    <ion-col col-3>
+                      <p>{{item.concepto}}</p>
+                    </ion-col>
+                    <ion-col col-3>
+                      <p>{{fomatPrice(item.cantidad)}} €</p>
+                    </ion-col>
+                    <ion-col col-3>
+                        <img class="imagen-movimientos" *ngIf="item.tipo=='Gasto'" src="assets/img/gasto.png" />
+                        <img  class="imagen-movimientos" *ngIf="item.tipo=='Ingreso'" src="assets/img/ingreso.png" />
+                    </ion-col>
+                  </ion-row>
+              </ion-grid>
+              <button (click)="atras()" class="previous">&laquo; {{ 'ATRAS' | translate }}</button>
+              <button (click)="siguiente()" class="next">{{ 'SIGUIENTE' | translate }} &raquo;</button>
+              <!--<ion-list>
+                <ion-item-sliding *ngFor="let item of operaciones.operaciones">
+                  <button ion-item (click)="openItem(item)">
+                    <ion-avatar item-start>
+                      <img *ngIf="item.tipo=='Gasto'" src="assets/img/gasto.png" />
+                      <img *ngIf="item.tipo=='Ingreso'" src="assets/img/ingreso.png" />
+                    </ion-avatar>
+                    <h2>{{item.concepto}}</h2>
+                    <p>{{fomatPrice(item.cantidad)}} €</p>
+                    <div class="hide">{{item._id}}</div>
+                    <ion-note item-end *ngIf="item.note">{{item.usuario}}</ion-note>
+                  </button>
+            
+                  <ion-item-options>
+                    <button ion-button color="info" (click)="editItem(item)">
+                        {{ 'EDIT_BUTTON' | translate }}
+                    </button>        
+                    <button ion-button color="danger" (click)="deleteItem(item)">
+                      {{ 'DELETE_BUTTON' | translate }}
+                    </button>
+                  </ion-item-options>
+                </ion-item-sliding>
+              </ion-list>-->
+            </ion-col>
+            <ion-col col-md-4 col-sm-12 col-12 class="">
+                <form *ngIf="form" [formGroup]="form">
+                    <ion-list>
+                      <ion-item>
+                        <ion-input type="text" placeholder="{{ 'CONCEPTO' | translate }}" formControlName="concepto" [(ngModel)]="operacion.concepto"></ion-input>
+                      </ion-item>
+                      <ion-item>
+                        <ion-input type="text" placeholder="{{ 'CANTIDAD_MIN' | translate }}" formControlName="cantidadMin" [(ngModel)]="operacion.cantidadMin"></ion-input>
+                      </ion-item>
+                      <ion-item>
+                        <ion-input type="text" placeholder="{{ 'CANTIDAD_MAX' | translate }}" formControlName="cantidadMax" [(ngModel)]="operacion.cantidadMax"></ion-input>
+                      </ion-item>
+                      <ion-item>
+                        <ion-label>{{ 'TIPO' | translate }}</ion-label>
+                        <ion-select formControlName="tipo" [(ngModel)]="operacion.tipo">
+                          <ion-option>{{ 'GASTO' | translate }}</ion-option>
+                          <ion-option>{{ 'INGRESO' | translate }}</ion-option>
+                          <ion-option value="">{{ 'AMBOS' | translate }}</ion-option>
+                        </ion-select>    
+                      </ion-item>
+                      <ion-item>
+                          <ion-label>{{ 'FECHA_MIN' | translate }}</ion-label>
+                          <ion-datetime formControlName="fechaMin" displayFormat="MMM DD, YYYY HH:mm" [(ngModel)]="operacion.fechaMin"></ion-datetime>
+                      </ion-item>
+                      <ion-item>
+                        <ion-label>{{ 'FECHA_MAX' | translate }}</ion-label>
+                        <ion-datetime formControlName="fechaMax" displayFormat="MMM DD, YYYY HH:mm" [(ngModel)]="operacion.fechaMax"></ion-datetime>
+                    </ion-item>
+                    </ion-list>
+                    <button ion-button (click)="done()" [disabled]="!isReadyToSave" strong>
+                        <span color="primary" showWhen="ios">
+                          {{ 'DONE_BUTTON' | translate }}
+                        </span>
+                        <ion-icon name="md-checkmark" showWhen="core,android,windows"></ion-icon>
+                      </button>
+                  </form>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

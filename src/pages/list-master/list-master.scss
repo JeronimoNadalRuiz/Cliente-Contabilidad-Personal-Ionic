@@ -1,0 +1,39 @@
+page-list-master {
+    .text-uc {
+        text-transform: uppercase;
+    }
+    .text-muted {
+        color: #707070;
+    }
+    .text-muted {
+        color: #777;
+    }
+    .icon-active{
+        color: #fff !important;
+        background: #fa6b5b;
+        border-right: 1px solid #555;
+        text-align: center;
+    }
+    small {
+        font-size: 90%;
+    }
+    .icon-resultados{
+        float: left !important;
+    }
+    h3, h2{
+        margin: 0px;
+    }
+    .col-texto-resultados{
+        margin-top: 2%;
+    }
+    .row-icon-resultados{
+        color: #717171!important;
+        background: #fff;
+        border-color: #dadada;
+        border-bottom-color: #ccc;
+        box-shadow: 0 1px 1px rgba(90,90,90,.1);
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 10px;
+    }
+}

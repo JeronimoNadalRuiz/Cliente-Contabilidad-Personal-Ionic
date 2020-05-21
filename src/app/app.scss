@@ -1,0 +1,190 @@
+// http://ionicframework.com/docs/v2/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+.fondo-listado{
+    background: #f5f5f5 !important;
+}
+ion-label[fixed] {
+    width: 200px;
+    min-width: 150px;
+}
+.hide{
+    display:none;
+}
+.navbar .toolbar-background {
+    background:#25313e !important;
+}
+.navbar img, .navbar h3{
+    cursor: pointer;
+}
+.ion-md-log-out{
+    color:#fff;
+}
+.bar-button{
+    vertical-align: middle;
+    font-size: 1rem;
+}
+.menu {
+    background: #424242;
+    padding:0px;
+    height: 100%;
+}
+ion-footer{
+    background: #424242;
+    text-align: center !important;
+}
+.button-footter{
+    margin-top: 20px !important;
+    margin-bottom: 20px !important;
+    background: #fa6b5b!important;
+    border-color: #fa6b5b!important;
+    border-radius: 50px;
+    text-transform: none;
+}
+.list-menu{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.item-menu{
+    background: none !important;
+    padding-left: 0px !important;
+    height: 44px;
+    border-bottom: 1px solid #555;
+}
+.icon-menu{
+    border-right: 1px solid #555;
+    text-align: center;
+}
+.span-menu{
+    color: #b6b6b6;
+    font-weight: bold;
+    padding: 0 10px;
+}
+.menu .label-md {
+    margin: 0px !important;
+}
+.grid-menu, .row-menu{
+    height: 100%;
+}
+.grid-menu{
+    padding-left: 0px !important;
+    padding-top: 0px !important;
+}
+.grid-item, .row-item{
+    height: 100%;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+.icon-menu .icon{
+    color: #b6b6b6;
+}
+.a-menu{
+    position: relative;
+    line-height: 42px;
+    color: #b6b6b6;
+    font-size: 14px;
+    cursor: pointer;
+}
+.cursor{
+    cursor: pointer;
+}
+.a-menu .grid{
+    padding: 0;
+}
+.current-user-name{
+    color: hsla(0,0%,100%,.7);
+    margin: 0 0.2rem;
+    padding: 0 5px;
+    border-radius: 2px;
+    height: 32px;
+    border: 0;
+    font-size: 1.4rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    vertical-align: middle;
+}
+.item-menu-apunte{
+    background: #bcc8cf;
+}
+.icon-anyadir{
+    background: #2e3e4e;
+    padding: 10px;
+}
+.span-anyadir{
+    color: #fff;
+    font-weight: bold;
+    padding: 0 10px;
+    font-size: 14px;
+}
+.menu-imagen{
+    float: left;
+}
+.menu-titulo{
+    color: #fff;
+    float: left;
+    width: 50%;
+    margin-left: 1%;
+    margin-top: 1%
+}
+.concepto .text-input{
+    border-bottom: 1px soli #000 !important;
+}
+.span-menu-active{
+    color: #fff;
+    font-weight: bold;
+    padding: 0 10px;
+}
+.no-border .item-inner:nth-child(2) {
+    border: none !important;
+}
+.picker-wrapper {
+    bottom: 50% !important;
+}
+.item-bandera{
+    background: transparent !important;
+}
+.select-text{
+    color: #fff;
+}
+.bandera{
+    width: 20px;
+    background: none;
+    box-shadow: none;    
+}
+.bandera:hover{
+    background: none !important;
+}
+.previous:hover, .next:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.previous {
+    background-color: #f1f1f1;
+    color: black;
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px 16px;
+}
+
+.next {
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px 16px;
+} 

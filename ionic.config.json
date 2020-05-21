@@ -1,0 +1,8 @@
+{
+  "name": "contabilidadPersonal",
+  "app_id": "d94943ef",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}

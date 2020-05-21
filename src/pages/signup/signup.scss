@@ -1,0 +1,61 @@
+page-signup {
+    ion-content{
+        background-color: #2e3e4e !important;
+    
+    }
+    .form-header{
+        background: grey;
+    }
+    #page-password-reset .panel .panel-heading, #page-signin .panel .panel-heading, #page-signup .panel .panel-heading {
+        font-size: 13px;
+    }
+    #page-signin .panel .panel-heading, #page-signup .panel .panel-heading {
+        padding: 10px 15px;
+        font-size: 13px;
+        text-align: center;
+        background: #f5f5f5;
+    }
+    #page-signin .panel .panel-heading, #page-signup .panel .panel-heading {
+        padding: 10px 15px;
+        font-size: 13px;
+        text-align: center;
+        background: #f5f5f5;
+    }
+    .panel-default>.panel-heading {
+        color: #333;
+        background-color: #f5f5f5;
+        border-color: #ddd;
+    }
+    .text-center {
+        text-align: center;
+    }
+    .panel-heading {
+        padding: 10px 15px;
+        border-bottom: 1px solid transparent;
+        border-top-right-radius: 3px;
+        border-top-left-radius: 3px;
+    }
+    page-signin .panel, #page-signup .panel {
+        background: #fff;
+    }
+    #page-signin .panel, #page-signup .panel {
+        background: #fff;
+    }
+    .bg-white {
+        background-color: #fff;
+        padding: 0px;
+    }
+    .panel-default {
+        border-color: #ddd;
+    }
+    .panel {
+        margin-bottom: 20px;
+        background-color: #fff;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    }
+    .grid{
+        margin-top: 10%;
+    }
+}

@@ -1,0 +1,103 @@
+<ion-nav #mycontent [root]="rootPage"></ion-nav>
+<ion-header>
+  <ion-navbar hideBackButton class="navbar">
+    <ion-grid class="">
+      <ion-row class="">
+        <ion-col col-12 col-sm-12 col-md-6  >
+            <img class="" src="assets/img/header.png" (click)="openResumen()">
+
+        </ion-col>
+        <ion-col col-12 col-sm-12 col-md-6  >
+          <ion-buttons end>
+            <span class="current-user-name">{{operacion.usuario}}</span> 
+            <button ion-button icon-only (click)="cerrarSesion()">
+              <ion-icon name="log-out"> {{ 'SALIR' | translate }}</ion-icon>
+            </button>
+            <button class="bandera" (click)="onChange('es')" ion-button icon-only>
+              <img class="" src="assets/img/spanish.png">
+            </button>
+            <button class="bandera" (click)="onChange('en')" ion-button icon-only>
+              <img class="" src="assets/img/english.png">
+            </button>
+            <button class="bandera" (click)="onChange('ca')" ion-button icon-only>
+              <img class="" src="assets/img/valencian.png">
+            </button>
+          </ion-buttons>
+        </ion-col>
+      </ion-row>
+
+      <!--<ion-col col-12 col-sm-12 col-md-2 >
+          <ion-item class="item-bandera">
+              <ion-label color="white">Selecciona el idioma</ion-label>
+              <ion-select [(ngModel)]="language" (ionChange)="onChange($event)">
+                <ion-option value="es">Castellano</ion-option>
+                <ion-option value="en">English</ion-option>
+                <ion-option value="ca">Valenciano</ion-option>
+              </ion-select>
+            </ion-item>
+      </ion-col> -->
+    </ion-grid>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="fondo-listado">
+  <ion-grid class="grid-menu">
+    <ion-row class="row-menu">
+      <ion-col col-12  col-sm-12 col-md-2  class="menu">
+        <ul  class="list-menu ">
+
+        </ul>
+        <ion-footer>
+          <button class="button-footter" ion-button (click)="contacto()">{{ 'AYUDANOS' | translate }}</button>
+        </ion-footer>
+      </ion-col>
+    
+      <ion-col col-12 col-sm-12 col-md-10  >        
+        <ion-grid class="grid-movimientos">
+          <ion-row class="row-movimientos">
+            <ion-col col-12>
+              <p>{{ 'LISTADO' | translate }}</p>
+            </ion-col>
+          </ion-row>
+          <ion-row class="row-movimientos2">
+            <ion-col col-2>
+              <p>{{ 'NAME' | translate }}</p>
+            </ion-col>
+            <ion-col col-2>
+              <p>{{ 'USER' | translate }}</p>
+            </ion-col>
+            <ion-col col-3>
+              <p>{{ 'EMAIL' | translate }}</p>
+            </ion-col>
+            <ion-col col-2>
+              <p>{{ 'ACTIVO' | translate }}</p>
+            </ion-col>
+            <ion-col col-2>
+              <p>{{ 'DELETE_BUTTON' | translate }}</p>
+            </ion-col>
+          </ion-row>
+          <ion-row class="cursor row-info-movimientos"  *ngFor="let item of operaciones.usuarios">
+              <ion-col col-2>
+                <p>{{item.nombre}}</p>
+              </ion-col>
+              <ion-col col-2>
+                <p>{{item.usuario}}</p>
+              </ion-col>
+              <ion-col col-3>
+                <p>{{item.email}}</p>
+              </ion-col>
+              <ion-col col-2>
+                  <img class="imagen-movimientos" *ngIf="item.activo=='si'" src="assets/img/activo.png" (click)="desactivarUsuario(item)" />
+                  <img class="imagen-movimientos" *ngIf="item.activo=='no'" src="assets/img/noactivo.png" (click)="desactivarUsuario(item)"/>
+              </ion-col>
+              <ion-col col-2>
+                <ion-icon class="imagen-movimientos" name="trash" (click)="eliminarUsuario(item)"></ion-icon>
+              </ion-col>
+            </ion-row>
+        </ion-grid>
+        <button (click)="atras()" class="previous">&laquo; {{ 'ATRAS' | translate }}</button>
+        <button (click)="siguiente()" class="next">{{ 'SIGUIENTE' | translate }} &raquo;</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

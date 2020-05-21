@@ -1,0 +1,193 @@
+<ion-nav #mycontent [root]="rootPage"></ion-nav>
+<ion-header>
+  <ion-navbar hideBackButton class="navbar">
+    <ion-grid class="">
+      <ion-row class="">
+        <ion-col col-12 col-sm-12 col-md-6  >
+            <img class="" src="assets/img/header.png" (click)="openResumen()">
+
+        </ion-col>
+        <ion-col col-12 col-sm-12 col-md-6  >
+          <ion-buttons end>
+            <span class="current-user-name">{{operacion.usuario}}</span> 
+            <button ion-button icon-only (click)="cerrarSesion()">
+              <ion-icon name="log-out"> {{ 'SALIR' | translate }}</ion-icon>
+            </button>
+            <button class="bandera" (click)="onChange('es')" ion-button icon-only>
+              <img class="" src="assets/img/spanish.png">
+            </button>
+            <button class="bandera" (click)="onChange('en')" ion-button icon-only>
+              <img class="" src="assets/img/english.png">
+            </button>
+            <button class="bandera" (click)="onChange('ca')" ion-button icon-only>
+              <img class="" src="assets/img/valencian.png">
+            </button>
+          </ion-buttons>
+        </ion-col>
+      </ion-row>
+
+      <!--<ion-col col-12 col-sm-12 col-md-2 >
+          <ion-item class="item-bandera">
+              <ion-label color="white">Selecciona el idioma</ion-label>
+              <ion-select [(ngModel)]="language" (ionChange)="onChange($event)">
+                <ion-option value="es">Castellano</ion-option>
+                <ion-option value="en">English</ion-option>
+                <ion-option value="ca">Valenciano</ion-option>
+              </ion-select>
+            </ion-item>
+      </ion-col> -->
+    </ion-grid>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="fondo-listado">
+  <ion-grid class="grid-menu">
+    <ion-row class="row-menu">
+      <ion-col col-12  col-sm-12 col-md-2  class="menu">
+        <ul  class="list-menu ">
+        <li class="item-menu-apunte">
+            <a class="a-menu" (click)="addItem()">
+              <ion-grid class="grid-item">
+                <ion-row class="row-item">
+                  <ion-col col-12 class="col-item icon-menu">
+                    <ion-icon name="add" class="icon-anyadir">                    
+                      <span class="span-anyadir">{{ 'AÑADIR_APUNTE' | translate }}</span>
+                    </ion-icon>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </a>
+          </li>
+          <li class="item-menu">
+            <a class="a-menu" (click)="openResumen()">
+              <ion-grid class="grid-item">
+                <ion-row class="row-item">
+                  <ion-col col-3 class="col-item icon-active">
+                    <ion-icon name="home" class=""></ion-icon>
+                  </ion-col>
+                  <ion-col col-9 class="col-item">
+                    <span class="span-menu-active">{{ 'RESUMEN' | translate }}</span>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </a>
+          </li>
+          <li class="item-menu" >
+            <a class="a-menu">
+              <ion-grid class="grid-item">
+                <ion-row class="row-item" (click)="openMovimientos()">
+                  <ion-col col-3 class="col-item icon-menu">
+                    <ion-icon name="sync" class=""></ion-icon>
+                  </ion-col>
+                  <ion-col col-9 class="col-item" >
+                    <span class="span-menu">{{ 'MOVIMIENTOS' | translate }}</span>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </a>
+          </li>
+          <li class="item-menu" >
+              <a class="a-menu">
+                <ion-grid class="grid-item">
+                  <ion-row class="row-item" (click)="openEstadisticas()">
+                    <ion-col col-3 class="col-item icon-menu">
+                      <ion-icon name="stats" class=""></ion-icon>
+                    </ion-col>
+                    <ion-col col-9 class="col-item" >
+                      <span class="span-menu">{{ 'ESTADISTICAS' | translate }}</span>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+              </a>
+            </li>
+        </ul>
+        <ion-footer>
+          <button class="button-footter" ion-button (click)="contacto()">{{ 'AYUDANOS' | translate }}</button>
+        </ion-footer>
+      </ion-col>
+    
+      <ion-col col-12 col-sm-12 col-md-10  >
+        <ion-grid class="grid-resultados">
+          <ion-row class="row-resultados">
+            <ion-col col-6   col-sm-6  col-md-3   class="col-resultados icon-resultados">
+                <ion-grid class="grid-icon-resultados">
+                  <ion-row class="row-icon-resultados">
+                    <ion-col col-6 col-sm-6  col-md-2  class="col-icon-resultados icon-resultados">
+                        <img src="assets/img/euro.png" />
+                      </ion-col>
+                    <ion-col col-6   col-sm-6 col-md-10  class="col-texto-resultados">
+                      <h2 class="block m-t-xs"><strong> {{fomatPrice(resultados.saldo)}} €</strong></h2>
+                      <small class="text-muted text-uc">{{ 'SALDO' | translate }}</small>                 
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+            </ion-col>
+            <ion-col col-6  col-sm-6 col-md-3    class="col-resultados icon-resultados">
+                <ion-grid class="grid-icon-resultados">
+                  <ion-row class="row-icon-resultados">
+                    <ion-col col-6 col-sm-6 col-md-2   class="col-icon-resultados icon-resultados">
+                        <img src="assets/img/ingreso-2.png" />
+                      </ion-col>
+                    <ion-col col-6  col-sm-6  col-md-10 class="col-texto-resultados">
+                      <h2 class="block m-t-xs"><strong> {{fomatPrice(resultados.ingresos)}} €</strong></h2>
+                      <small class="text-muted text-uc">{{ 'INGRESOS' | translate }}</small>                 
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+            </ion-col>
+            <ion-col col-6  col-sm-6 col-md-3   class="col-resultados icon-resultados">
+                <ion-grid class="grid-icon-resultados">
+                  <ion-row class="row-icon-resultados">
+                    <ion-col col-6  col-sm-6  col-md-2 class="col-icon-resultados icon-resultados">
+                        <img src="assets/img/dislike.png" />
+                      </ion-col>
+                    <ion-col col-6  col-sm-6  col-md-10 class="col-texto-resultados">
+                      <h2 class="block m-t-xs"><strong> {{fomatPrice(resultados.gastos)}} €</strong></h2>
+                      <small class="text-muted text-uc">{{ 'GASTOS' | translate }}</small>                 
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+            </ion-col>
+            <ion-col col-6 col-sm-6 col-md-3   class="col-resultados icon-resultados">
+                <ion-grid class="grid-icon-resultados">
+                  <ion-row class="row-icon-resultados">
+                    <ion-col col-6  col-sm-6   col-md-2 class="col-icon-resultados icon-resultados">
+                        <img src="assets/img/reload.png" />
+                      </ion-col>
+                    <ion-col col-6 col-sm-6 col-md-10   class="col-texto-resultados">
+                      <h2 class="block m-t-xs"><strong> {{resultados.movimientos}}</strong></h2>
+                      <small class="text-muted text-uc">{{ 'MOVIMIENTOS' | translate }}</small>                 
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        
+        <ion-grid class="">
+          <ion-row class="">
+            <ion-col col-12 class="">
+              <ion-list>
+                <ion-item class="no-border" *ngFor="let item of operaciones.operaciones | slice:0:5; let i=index">
+                  <button ion-item (click)="openItem(item)">
+                    <ion-avatar item-start>
+                      <img *ngIf="item.tipo=='Gasto'" src="assets/img/gasto.png" />
+                      <img *ngIf="item.tipo=='Ingreso'" src="assets/img/ingreso.png" />
+                    </ion-avatar>
+                    <h2>{{item.concepto}}</h2>
+                    <small>{{item.fecha|date:'dd/MM/yyyy'}}   </small>
+                    <p>{{fomatPrice(item.cantidad)}} €</p>
+                    <div class="hide">{{item._id}}</div>
+                    <ion-note item-end *ngIf="item.note">{{item.usuario}}</ion-note>
+                  </button>
+            
+
+                </ion-item>
+              </ion-list>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

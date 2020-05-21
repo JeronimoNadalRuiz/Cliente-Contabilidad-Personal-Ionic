@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-navbar hideBackButton class="navbar">
+    <ion-grid class="">
+      <ion-row class="">
+        <ion-col col-12 col-sm-12 col-md-6  >
+            <img class="" src="assets/img/header2.png" alt="header">
+        </ion-col>
+        <ion-col col-12 col-sm-12 col-md-6 text-right>
+          <button ion-button color="transperent" (click)="openLogin()">{{ 'LOGIN' | translate }}</button>
+          <button ion-button color="secondary" (click)="openRegistro()">{{ 'SIGNUP_TITLE' | translate }}</button>
+          <button class="bandera" (click)="onChange('es')" ion-button icon-only>
+            <img class="" src="assets/img/spanish.png">
+          </button>
+          <button class="bandera" (click)="onChange('en')" ion-button icon-only>
+            <img class="" src="assets/img/english.png">
+          </button>
+          <button class="bandera" (click)="onChange('ca')" ion-button icon-only>
+            <img class="" src="assets/img/valencian.png">
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-navbar>
+</ion-header>
+
+
+
+<ion-content>
+  <div class="header2" text-center>
+      <h1>COTABILIDAD PERESONAL</h1>
+      <h2>{{ 'CONTABILIADAD_FACIL' | translate }}</h2>
+      <button ion-button color="secondary" (click)="openRegistro()" text-center>{{ 'SIGNUP_TITLE' | translate }}</button>
+  </div>
+  <div text-center>
+      <img class="back-landing" style="width:50%" src="assets/img/backLanding.png" alt="backlanding">
+  </div>
+  <div class="separador" text-center>
+    <h2>"{{ 'MIDE' | translate }}"</h2>
+  </div>
+  <div class="casi-blanco" text-center>
+    <h2>{{ 'SEGURA' | translate }}</h2>
+    <ion-grid>
+      <ion-row>
+        <ion-col col-12 col-md-6 col-sm-6>
+          <ion-icon name="thumbs-up"></ion-icon>
+          <p>{{ 'ESFUERZO' | translate }} <br> {{ 'ESFUERZO2' | translate }}</p>
+        </ion-col>
+        <ion-col col-12 col-md-6 col-sm-6>
+          <ion-icon name="lock"></ion-icon>  
+          <p>{{ 'DATOS' | translate }} <br> {{ 'DATOS2' | translate }}
+
+          </p>        
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <div class="fondo-blanco" text-center>
+    <h1>{{ 'PRUEBA' | translate }} CONTABILIDAD PERSONAL</h1>
+    <button ion-button color="secondary" (click)="openRegistro()" text-center>{{ 'SIGNUP_TITLE' | translate }}</button>
+  </div>
+  <div class="contacto" text-center>
+      <ion-icon name="text"></ion-icon>
+      <h3>{{ 'CONTACTO' | translate }}</h3>
+      <p>jeronimo.nadal@gmail.com</p>
+  </div>
+</ion-content>
